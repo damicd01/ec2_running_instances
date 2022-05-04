@@ -2,6 +2,7 @@ data "archive_file" "python_lambda_every_thirty_minutes" {
     type = "zip"  
     source_file = "lambda_function.py" 
     output_path = "lambda_function.zip"
+
 }
 
 resource "aws_lambda_function" "lambda_every_thirty_minutes" {
@@ -12,12 +13,16 @@ resource "aws_lambda_function" "lambda_every_thirty_minutes" {
     runtime       = "python3.9"
     handler       = "lambda_function.lambda_handler"
     timeout       = 60
+    
+    tags = var.default_tags
 }
 
 resource "aws_cloudwatch_event_rule" "lambda_every_thirty_minutes" {
     name = "lambda_every_thirty_minutes"
     description = "Fires every thirty minutes"
     schedule_expression = "rate(30 minutes)"
+
+    tags = var.default_tags
 }
 
 resource "aws_cloudwatch_event_target" "lambda_every_thirty_minutes" {

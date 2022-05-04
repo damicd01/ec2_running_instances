@@ -2,6 +2,8 @@ resource "aws_kms_key" "lambda_kms_key" {
   description         = "lambda_kms_key"
   key_usage           = "ENCRYPT_DECRYPT"
   enable_key_rotation = true
+
+  tags = var.default_tags
 }
 
 resource "aws_kms_alias" "lambda_kms_key" {
