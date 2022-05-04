@@ -15,3 +15,11 @@ variable "secret_access_key" {
   description = "secret_access_key"
   default     = ""
 }
+
+variable "default_tags" { 
+    type = map(string)
+    default = { 
+        Project: "Running Instances EC2",
+        Charge_Code: "12345ABCDE"
+  } 
+}

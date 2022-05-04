@@ -1,5 +1,6 @@
 resource "aws_iam_role" "lambda_iam_role" {
   name = "lambda_iam_role"
+  tags = var.default_tags
 
   assume_role_policy = <<-EOF
 {
