@@ -14,10 +14,9 @@ def lambda_handler(event, context):
     for reservation in response["Reservations"]:
         for instance in reservation["Instances"]:
             if instance['State']['Name'] == 'running':
-               x = (instance["InstanceId"])
-               #print(x)
-               running_instances.append(x)
-               total_running_instances = len(running_instances)
+                x = (instance["InstanceId"])
+                running_instances.append(x)
+                total_running_instances = len(running_instances)
     
     cloudwatch = boto3.client('cloudwatch',region_name='eu-west-1')
     response = cloudwatch.put_metric_data(
