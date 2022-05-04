@@ -76,7 +76,7 @@ resource "aws_iam_policy" "lambda_iam_policy" {
 EOF
 }
 
-resource "aws_iam_role_policy_attachment" "glambda_iam_policy_attach" {
+resource "aws_iam_role_policy_attachment" "lambda_iam_policy_attach" {
   role       = aws_iam_role.lambda_iam_role.name
   policy_arn = aws_iam_policy.lambda_iam_policy.arn
 }
